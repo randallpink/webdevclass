@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pizza.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pizza.description %>
+</p>
+<p>
+  <strong>Bread:</strong>
+  <%= @pizza.bread.name %>
+</p>
+<p>
+  <strong>Sauce:</strong>
+  <%= @pizza.sauce.name %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @pizza.price %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= image_tag @pizza.photo %>
+</p>
+
+<%= link_to 'Edit', edit_pizza_path(@pizza) %> |
+<%= link_to 'Back', pizzas_path %>

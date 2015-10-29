@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Breads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Thickness in inches</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @breads.each do |bread| %>
+      <tr>
+        <td><%= bread.name %></td>
+        <td><%= bread.description %></td>
+        <td><%= bread.thickness_in_inches %></td>
+        <td><%= link_to 'Show', bread, class: 'btn btn-default btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_bread_path(bread), class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Destroy', bread, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bread', new_bread_path, class: 'btn btn-primary btn-xs' %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bread.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bread.description %>
+</p>
+
+<p>
+  <strong>Thickness in inches:</strong>
+  <%= @bread.thickness_in_inches %>
+</p>
+
+<%= link_to 'Edit', edit_bread_path(@bread) %> |
+<%= link_to 'Back', breads_path %>

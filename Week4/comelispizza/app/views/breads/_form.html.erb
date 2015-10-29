@@ -1,0 +1,29 @@
+<%= form_for(@bread, html: {class: 'form-inline'}) do |f| %>
+  <% if @bread.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bread.errors.count, "error") %> prohibited this bread from being saved:</h2>
+
+      <ul>
+      <% @bread.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :thickness_in_inches %><br>
+    <%= f.number_field :thickness_in_inches %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
