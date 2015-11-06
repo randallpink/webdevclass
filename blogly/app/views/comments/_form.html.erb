@@ -1,0 +1,8 @@
+
+
+  <%= simple_form_for @comment do |f| %>
+  <%= f.input :content %>
+  <%= f.association :post %>
+  <%= f.button :submit %>
+<% end %>
+
