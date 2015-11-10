@@ -19,6 +19,12 @@
   <strong>Price:</strong>
   <%= @vehicle.price %>
 </p>
+<h2>Features</h2>
+<ul>
+	<%- @vehicle.features.each do |feature| %>
+	  	<li><%= feature.name %> </li>
+	<% end %>
+</ul>
 
 <%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
 <%= link_to 'Back', vehicles_path %>
