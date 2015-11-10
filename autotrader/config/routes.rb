@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :features
   resources :vehicles
   resources :categories
@@ -57,4 +58,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  root to: "vehicles#index"
 end
