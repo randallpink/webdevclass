@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -73,6 +74,7 @@ class PostsController < ApplicationController
                                    :slug, 
                                    :content, 
                                    :featured_image,
+                                   :user_id,
                                    {category_ids: [] })
     end
 end

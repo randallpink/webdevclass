@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @post.name %>
@@ -19,6 +17,11 @@
   <strong>Featured image:</strong>
   <%= @post.featured_image %>
 </p>
+<p>
+  <strong>Owner:</strong>
+  <td><%= @post.user.email %></td> 
+</p>
+
 <h2>Categories</h2>
 <ul>
 	<%- @post.categories.each do |category| %>
