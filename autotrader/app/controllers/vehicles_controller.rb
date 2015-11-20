@@ -27,9 +27,13 @@ class VehiclesController < ApplicationController
   # POST /vehicles.json
   def create
     @vehicle = Vehicle.new(vehicle_params)
+#    @vehicle = current_user.vehicles.new(vehicle_params)
+    @vehicle.user_id = current_user.id if current_user
+   
 
     respond_to do |format|
       if @vehicle.save
+        UserMailer.vehicle_confirmation(@vehicle.id).deliver_later
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
         format.json { render :show, status: :created, location: @vehicle }
       else
@@ -44,6 +48,7 @@ class VehiclesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle.update(vehicle_params)
+        UserMailer.vehicle_confirmation(@vehicle.id).deliver_later
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
         format.json { render :show, status: :ok, location: @vehicle }
       else
@@ -73,6 +78,7 @@ class VehiclesController < ApplicationController
     def vehicle_params
       params.require(:vehicle).permit(:category_id, 
                                       :color, 
+                                      :user_id, 
                                       :condition, 
                                       :price, 
                                       {feature_ids: [] })
