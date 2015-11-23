@@ -12,7 +12,6 @@ class UserMailer < ApplicationMailer
 
 	mail to: @post.user.email,       # Setting recipient to the post's user
 	subject: "Post Confirmation",
-	from: "confirmations@blogly.com",
-  body: "Thanks for your post.  You can view it here: " 
+	from: "confirmations@blogly.com"
   end
 end
