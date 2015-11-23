@@ -15,7 +15,10 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    ## OLD Method to create: 
+    ##@post = Post.new
+    
+    @post = current_user.posts.build 
   end
 
   # GET /posts/1/edit
@@ -25,10 +28,16 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    
+    ## OLD Method to create:  
+    ##@post = Post.new(post_params)
+    
+    @post = current_user.posts.build(post_params)   
+
 
     respond_to do |format|
       if @post.save
+        UserMailer.post_confirmation(@post.id).deliver_later
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -43,6 +52,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+         UserMailer.post_confirmation(@post.id).deliver_later
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
