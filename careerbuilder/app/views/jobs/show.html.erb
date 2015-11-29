@@ -16,6 +16,13 @@
 </p>
 
 <p>
+  <strong>Lat/long:</strong>
+  <%= @job.latitude %>, 
+  <%= @job.longitude %>
+</p>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}" %>
+
+<p>
   <strong>Description:</strong>
   <%= @job.description %>
 </p>
@@ -48,7 +55,9 @@
 <p>
   <strong>User:</strong>
   <%= @job.user.email %>
+  <%= distance_of_time_in_words(Time.now, @job.user.created_at) %>
 </p>
 
+<%= link_to 'Apply', new_application_path(:id => @job.id) %> |
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>

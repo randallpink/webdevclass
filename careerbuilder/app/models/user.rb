@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
  ##  extend FriendlyId
  ##  friendly_id :sluggable, use: [:slugged, :finders]
    has_many :jobs
+   has_many :applications
 end

@@ -15,6 +15,11 @@ class ApplicationsController < ApplicationController
   # GET /applications/new
   def new
     @application = Application.new
+    @application.job_id = params[:id]
+    @application.user_id = current_user.id if current_user
+    @application.email = current_user.email if current_user
+    
+    ##raise "#{params}"
   end
 
   # GET /applications/1/edit
@@ -25,6 +30,12 @@ class ApplicationsController < ApplicationController
   # POST /applications.json
   def create
     @application = Application.new(application_params)
+    @application.user_id = current_user.id if current_user
+    @application.email = current_user.email if current_user
+    
+    
+    
+    
 
     respond_to do |format|
       if @application.save
