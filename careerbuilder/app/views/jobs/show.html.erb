@@ -54,8 +54,11 @@
 
 <p>
   <strong>User:</strong>
-  <%= @job.user.email %>
-  <%= distance_of_time_in_words(Time.now, @job.user.created_at) %>
+  <%= @job.user.email %> joined CB
+  <%= distance_of_time_in_words(Time.now, @job.user.created_at) %> ago, 
+   has created <%= @job.user.jobs.onsite_job_list.count %> onsite jobs, and 
+  has created <%= @job.user.jobs.remote_job_list.count %> remote jobs. 
+  
 </p>
 
 <%= link_to 'Apply', new_application_path(:id => @job.id) %> |
