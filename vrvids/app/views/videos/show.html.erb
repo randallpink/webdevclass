@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link url:</strong>
+  <%= @video.link_url %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @video.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @video.category_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @video.description %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @video.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @video.state %>
+</p>
+
+<p>
+  <strong>Lat/long:</strong>
+  <%= @video.latitude %>, 
+  <%= @video.longitude %>
+</p>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@video.latitude}%2C#{@video.longitude}" %>
+
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>
